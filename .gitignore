@@ -1,0 +1,38 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# AI Models
+*.onnx
+*.pt
+*.pth
+*.tflite
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Database
+*.db
+*.sqlite3
