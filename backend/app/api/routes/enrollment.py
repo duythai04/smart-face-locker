@@ -17,8 +17,8 @@ from app.ai.face_recognizer import get_face_recognizer
 from app.services.enrollment_service import (
     EnrollmentService,
     NoAvailableLockerError,
+    FaceAlreadyEnrolledError,
 )
-
 
 router = APIRouter(
     prefix="/api/locker-sessions",
@@ -96,6 +96,12 @@ async def enroll_face(
         enrollment = EnrollmentService.enroll(
             db=db,
             embedding=embedding,
+        )
+
+    except FaceAlreadyEnrolledError:
+        raise HTTPException(
+            status_code=409,
+            detail="Face already has an active locker session",
         )
 
     except NoAvailableLockerError:
